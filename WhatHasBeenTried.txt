@@ -1,0 +1,7 @@
+ - It started with first understanding what is NEO..turns out it is very simple ..we just need to take the difference of sampled data (d[n])^2 - (d[n-1])(d[n+1])..Intuitive meaning?
+ - Then the next step was to try it in MATLAB..very simple to implement..
+ - Major struggle as always was to get it working on MSP430..The first area of effort was directed in building something in real-time. initially time was spent in studying USB to match the data exchange speed requirements which came out    to be 10.65 Mbps. with a stop bit it is 11.9 Mbps.
+ - Then in the second innings, after dealing with a bit of ckt design, you returned back to NEO and continued on the NEO based spike detection which was achieved initially with some random data being passed.
+ - During the second part, first I2R's code had to be understood as to how they do the spike detection thing. Then a strategy had to be derived on how to do it..You can refer R5 for detailed maps. Its simple but took some effort,    especially in validating if it works.
+ - Key idea is that pass the entire window's sampled data --> instance by instance and save it in a buffer defined for this..after receiving this data do the NEO based spike detection and return if a spike is detected or not..For       validation the spikes were returned from MSP430 to MATLAB and comparison was done on the same NEO based spike detection done in MATLAB..
+- After these results matched, the next step was saving the no. of cycles and the channel address in memory.  
